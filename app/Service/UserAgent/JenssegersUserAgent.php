@@ -4,16 +4,26 @@
 namespace App\Service\UserAgent;
 
 
+use Jenssegers\Agent\Agent;
+
 class JenssegersUserAgent implements UserAgent
 {
+    protected $data;
+
+    public function __construct()
+    {
+        $this->data = new Agent();
+    }
 
     public function browser()
     {
-        // TODO: Implement browser() method.
+        return $this->data->browser();
     }
 
     public function system()
     {
-        // TODO: Implement system() method.
+        return $this->data->platform();
     }
+
+
 }

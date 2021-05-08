@@ -6,14 +6,42 @@ namespace App\Service\UserAgent;
 
 class PlainUserAgent implements UserAgent
 {
+    protected $data;
 
     public function browser()
     {
-        // TODO: Implement browser() method.
+        $popularBrowsers = ["Opera", "OPR/", "Edg", "Chrome", "Safari", "Firefox", "MSIE", "Trident"];
+
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $userBrowser = 'Other less popular browsers';
+        foreach ($popularBrowsers as $browser) {
+            if (strpos($userAgent, $browser) !== false) {
+                $userBrowser = $browser;
+                break;
+            }
+        }
+
+        switch ($userBrowser) {
+            case 'OPR/':
+                $userBrowser = 'Opera';
+                break;
+            case 'Trident':
+            case 'MSIE':
+                $userBrowser = 'Internet Explorer';
+                break;
+
+            case 'Edg':
+                $userBrowser = 'Microsoft Edge';
+                break;
+        }
+
+
+        return  $userBrowser;
     }
 
     public function system()
     {
-        // TODO: Implement system() method.
+        return PHP_OS;
     }
+
 }

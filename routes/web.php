@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GeoIpController;
+use App\Http\Controllers\UserAgentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [GeoIpController::class,'index']);
+Route::get('/geo', [GeoIpController::class,'index']);
+Route::get('/', [UserAgentController::class,'index']);
