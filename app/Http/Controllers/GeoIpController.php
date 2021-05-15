@@ -12,6 +12,7 @@ class GeoIpController extends Controller
 {
     public function index(GeoService $geoService)
     {
+        return 'Yes';
         $ip = \request()->server->get('HTTP_X_FORWARDED_FOR');
 
         $geoService->parse($ip);

@@ -18,8 +18,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(UserAgent::class, function () {
-//            return new PlainUserAgent();
-            return new JenssegersUserAgent();
+            return new PlainUserAgent();
+//            return new JenssegersUserAgent();
         });
     }
 
